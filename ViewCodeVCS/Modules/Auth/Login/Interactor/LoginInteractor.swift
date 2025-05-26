@@ -10,9 +10,8 @@ import Foundation
 class LoginInteractor {
     var presenter: LoginPresenter?
     
-    //TODO: Criar um entidade userModel
-    func performLogin(username: String, password: String){
-        if username == "edy" && password == "123456"{
+    func performLogin(request: LoginModel.Request){
+        if request.username == "edy" && request.password == "123456"{
             print("Login realizado com sucesso!")
         } else {
             print("Dados incorretos")

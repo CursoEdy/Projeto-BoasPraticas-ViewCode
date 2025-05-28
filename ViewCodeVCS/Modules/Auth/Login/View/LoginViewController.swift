@@ -31,9 +31,14 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupSubviews()
+        loginButton.addTarget(self, action: #selector(handleLoginButton), for: .touchUpInside)
     }
     
     //TODO: criar perform para rota main após login com êxito.
+    @objc private func handleLoginButton() {
+        let user = LoginModel.Request(username: "edy", password: "123456")
+        interactor?.performLogin(request: user)
+    }
     
     //TODO: perform view signUP view.
     

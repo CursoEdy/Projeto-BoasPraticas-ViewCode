@@ -17,6 +17,7 @@ class LoginPresenter {
     }
     
     func loginSuccess() {
+        print("✅ Login bem-sucedido, chamando coordinator")
         coordinator?.loginSuccess()
     }
     

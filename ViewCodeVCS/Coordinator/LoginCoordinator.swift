@@ -24,7 +24,7 @@ class LoginCoordinator {
         loginVc.interactor = interactor
         interactor.presenter = presenter
         
-        navigationController.pushViewController(loginVc, animated: true)
+        navigationController.setViewControllers([loginVc], animated: false)
     }
     
     func goToSignUp() {
@@ -35,7 +35,7 @@ class LoginCoordinator {
         signUpVC.iteractor = interactor
         interactor.presenter = presenter
         
-        navigationController.pushViewController(signUpVC, animated: true)
+        navigationController.setViewControllers([signUpVC], animated: false)
     }
     
     func goBackSignUp(){

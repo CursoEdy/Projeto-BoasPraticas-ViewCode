@@ -12,9 +12,10 @@ class LoginInteractor {
     
     func performLogin(request: LoginModel.Request){
         if request.username == "edy" && request.password == "123456"{
-            print("Login realizado com sucesso!")
+            UserDefaults.standard.set(true, forKey: "isLoggedIn")
+            presenter?.loginSuccess()
         } else {
-            print("Dados incorretos")
+            presenter?.loginFailed()
         }
     }
     

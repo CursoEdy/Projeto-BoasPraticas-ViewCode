@@ -21,17 +21,21 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
         title = "Home"
         setupSubviews()
-        logoutButton.addTarget(self, action: #selector(handleLogout), for: .touchUpInside)
     }
     
-    @objc private func handleLogout() {
+    @objc private func logoutTapped() {
+        print("🔁 Botão de logout pressionado")
         onLogout?()
     }
     
     private func setupSubviews() {
         view.addSubview(logoutButton)
+        
+        logoutButton.addTarget(self, action: #selector(logoutTapped), for: .touchUpInside)
+        
         NSLayoutConstraint.activate([
             logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),

@@ -11,18 +11,20 @@ class LoginViewController: UIViewController {
     
     var interactor: LoginInteractor?
     
-    private let label: UILabel = {
+    private let labelDesc: UILabel = {
         let label = UILabel()
-        label.text = "Hello, World!"
+        label.text = "Bem vindo a tela de Login!"
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints =  false
         return label
     }()
     
-    private let labelDesc: UILabel = {
-        let label = UILabel()
-        label.text = "Bem vindo a tela de Login!"
-        label.translatesAutoresizingMaskIntoConstraints =  false
-        return label
+    private let loginButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Login", for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
 
     override func viewDidLoad() {
@@ -36,17 +38,17 @@ class LoginViewController: UIViewController {
     //TODO: perform view signUP view.
     
     private func setupSubviews () {
-        view.addSubview(label)
         view.addSubview(labelDesc)
+        view.addSubview(loginButton)
         
         NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 40),
-            label.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 40),
-            label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            labelDesc.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            labelDesc.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            labelDesc.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             
-            labelDesc.leadingAnchor.constraint(equalTo: label.leadingAnchor),
-            labelDesc.trailingAnchor.constraint(equalTo: label.trailingAnchor),
-            labelDesc.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 10),
+            loginButton.leadingAnchor.constraint(equalTo: labelDesc.leadingAnchor),
+            loginButton.trailingAnchor.constraint(equalTo: labelDesc.trailingAnchor),
+            loginButton.topAnchor.constraint(equalTo: labelDesc.bottomAnchor, constant: 20),
         ])
     }
 

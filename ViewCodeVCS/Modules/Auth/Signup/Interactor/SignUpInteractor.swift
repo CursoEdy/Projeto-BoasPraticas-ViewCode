@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+class SignUpInteractor {
+    var presenter: SignUpPresenter?
+    
+    func performSignUp() {
+        presenter?.signUpSuccess()
+    }
+}

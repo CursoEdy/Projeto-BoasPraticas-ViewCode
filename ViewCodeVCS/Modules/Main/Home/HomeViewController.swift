@@ -8,22 +8,34 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    
+    private let logoutButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Logout", for: .normal)
+        button.setTitleColor(.red, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    var onLogout: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        title = "Home"
+        setupSubviews()
+        logoutButton.addTarget(self, action: #selector(handleLogout), for: .touchUpInside)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc private func handleLogout() {
+        onLogout?()
     }
-    */
-
+    
+    private func setupSubviews() {
+        view.addSubview(logoutButton)
+        NSLayoutConstraint.activate([
+            logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            logoutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            logoutButton.heightAnchor.constraint(equalToConstant: 44),
+        ])
+    }
 }

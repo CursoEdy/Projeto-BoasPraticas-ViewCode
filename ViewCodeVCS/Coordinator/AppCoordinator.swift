@@ -28,12 +28,19 @@ final class AppCoordinator {
     }
     
     func showLogin() {
+        navigationController.setViewControllers([], animated: true)
         let loginCoordinator = LoginCoordinator(navigationController: navigationController)
+        loginCoordinator.appCoordinator = self
         loginCoordinator.start()
     }
     
     func showHome() {
-        //show main/home app screen 
+        let homeVc = HomeViewController()
+        homeVc.onLogout = { [weak self] in
+            UserDefaults.standard.set(false, forKey: "isLoggedIn")
+            self?.showLogin()
+        }
+        navigationController.setViewControllers([homeVc], animated: true)
     }
 }
     

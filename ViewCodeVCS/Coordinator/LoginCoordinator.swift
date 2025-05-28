@@ -10,6 +10,7 @@ import UIKit
 
 class LoginCoordinator {
     var navigationController: UINavigationController
+    weak var appCoordinator: AppCoordinator?
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -28,12 +29,21 @@ class LoginCoordinator {
     
     func goToSignUp() {
         let signUpVC = SignUpViewController()
+        let interactor = SignUpInteractor()
+        let presenter = SignUpPresenter(view: signUpVC, coordinator: self)
+        
+        signUpVC.iteractor = interactor
+        interactor.presenter = presenter
+        
         navigationController.pushViewController(signUpVC, animated: true)
     }
     
+    func goBackSignUp(){
+        navigationController.popViewController(animated: true)
+    }
+    
     func loginSuccess() {
-        let homeViewController = ViewController()
         UserDefaults.standard.set(true, forKey: "isLoggedIn")
-        navigationController.pushViewController(homeViewController, animated: true)
+        appCoordinator?.showHome()
     }
 }

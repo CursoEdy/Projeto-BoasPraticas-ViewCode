@@ -27,7 +27,7 @@ class HomeViewController: UIViewController {
     }
     
     @objc private func logoutTapped() {
-        print("🔁 Botão de logout pressionado")
+        print("Botão de logout pressionado")
         onLogout?()
     }
     

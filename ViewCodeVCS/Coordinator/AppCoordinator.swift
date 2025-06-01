@@ -24,10 +24,10 @@ final class AppCoordinator {
     
     func start() {
         if UserDefaults.standard.bool(forKey: "isLoggedIn") {
-            print("➡️ Indo para Home")
+            print("Indo para Home")
             showHome()
         } else {
-            print("➡️ Voltando para Login")
+            print("Voltando para Login")
             showLogin()
         }
     }
@@ -48,7 +48,7 @@ final class AppCoordinator {
         
         let homeVc = HomeViewController()
         homeVc.onLogout = { [weak self] in
-            print("➡️ Voltando para Login")
+            print("Voltando para Login")
             UserDefaults.standard.set(false, forKey: "isLoggedIn")
             self?.showLogin()
         }

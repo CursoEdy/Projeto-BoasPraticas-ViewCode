@@ -20,6 +20,6 @@ class LoginInteractor {
     }
     
     func navigateToSignUp(){
-        print("Navegando para tela de cadastro")
+        presenter?.goToSignUp()
     }
 }

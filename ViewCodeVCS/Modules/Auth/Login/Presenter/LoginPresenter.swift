@@ -17,12 +17,12 @@ class LoginPresenter {
     }
     
     func loginSuccess() {
-        print("✅ Login bem-sucedido, chamando coordinator")
+        print("Login bem-sucedido, chamando coordinator")
         coordinator?.loginSuccess()
     }
     
     func loginFailed() {
-        //TODO: Exibir um alerta na view
+        print("LoginPresenter: login falhou")
     }
     
     func goToSignUp() {
